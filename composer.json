@@ -1,0 +1,24 @@
+{
+    "name": "ihor/commission",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Commission\\": "src/"
+        },
+        "files": [
+            "src/helpers/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Unit\\": "tests/unit/"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "*",
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
