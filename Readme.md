@@ -1,5 +1,11 @@
 ### ExchangeRate API
-Set your API Key in .env file
+Rename the file .env.example to .env
+
+```
+mv .env.example .env
+```
+
+and then set your API Key in .env file
 
 ### Installation & Run
 
