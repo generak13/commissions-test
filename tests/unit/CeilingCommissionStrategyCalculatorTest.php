@@ -4,16 +4,16 @@ namespace Tests\Unit;
 
 use Commission\Calculator\EuroCommissionStrategyCalculator;
 use Commission\Calculator\NonEuroCommissionStrategyCalculator;
-use Commission\Calculator\RoundCommissionStrategyCalculator;
+use Commission\Calculator\CeilingCommissionStrategyCalculator;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 
-class RoundedCommissionStrategyCalculatorTest extends TestCase
+class CeilingCommissionStrategyCalculatorTest extends TestCase
 {
     #[DataProvider('euDataProvider')]
     public function testEu(int $amount, int $rate, float $expected)
     {
-        $strategy = new RoundCommissionStrategyCalculator(
+        $strategy = new CeilingCommissionStrategyCalculator(
             new EuroCommissionStrategyCalculator(),
         );
 
@@ -26,7 +26,7 @@ class RoundedCommissionStrategyCalculatorTest extends TestCase
     public static function euDataProvider(): array
     {
         return [
-            [100, 3, 0.33],
+            [100, 3, 0.34],
             [110, 3, 0.37],
         ];
     }
@@ -34,7 +34,7 @@ class RoundedCommissionStrategyCalculatorTest extends TestCase
     #[DataProvider('nonEuDataProvider')]
     public function testNonEu(int $amount, int $rate, float $expected)
     {
-        $strategy = new RoundCommissionStrategyCalculator(
+        $strategy = new CeilingCommissionStrategyCalculator(
             new NonEuroCommissionStrategyCalculator(),
         );
 
@@ -48,7 +48,7 @@ class RoundedCommissionStrategyCalculatorTest extends TestCase
     {
         return [
             [100, 3, 0.67],
-            [110, 3, 0.73],
+            [110, 3, 0.74],
         ];
     }
 }
